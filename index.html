@@ -1,0 +1,501 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Shakiras Descension</title>
+<style>
+/* Layout concept: single-column parchment-on-obsidian scroll: a hero sigil, a join
+   ritual in steps, five illuminated chapters of classes (collapsible), and a
+   role-matrix codex table at the close. */
+:root{
+  --ink:#16110d;
+  --ink-raised:#1f1812;
+  --parchment:#e9dcc3;
+  --parchment-dim:#b9a98c;
+  --gold:#c9972f;
+  --ember:#b5472b;
+  --rule:#3a2d1f;
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, #241c13 0%, transparent 60%),
+    var(--ink);
+  color:var(--parchment);
+  font-family:'Crimson Pro', Georgia, 'Times New Roman', serif;
+  font-size:17px;
+  line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+
+h1,h2,h3,.eyebrow,.realm-name{font-family:'Cinzel', 'Crimson Pro', Georgia, serif;}
+
+a{color:var(--gold)}
+
+.wrap{max-width:860px;margin:0 auto;padding-block:48px}
+
+/* ---------- Hero ---------- */
+.hero{text-align:center;padding-block:28px 40px;border-bottom:1px solid var(--rule);margin-bottom:40px}
+.sigil{
+  width:72px;height:72px;margin:0 auto 18px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;color:var(--gold);
+  box-shadow:0 0 24px rgba(201,151,47,0.25);
+}
+.realm-name{
+  font-size:clamp(2.1rem, 7vw, 3.4rem);
+  font-weight:700;
+  letter-spacing:0.02em;
+  margin:0 0 10px;
+  background:linear-gradient(180deg,#f0e2c2,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-wrap:balance;
+}
+.tagline{
+  color:var(--parchment-dim);
+  font-size:1.05rem;
+  font-style:italic;
+  max-width:46ch;margin:0 auto;
+  text-wrap:balance;
+}
+.stat-row{
+  display:flex;flex-wrap:wrap;gap:28px;justify-content:center;margin-top:28px;
+}
+.stat{text-align:center;min-width:90px}
+.stat b{display:block;font-size:1.6rem;color:var(--gold);font-family:'Cinzel',serif;font-variant-numeric:tabular-nums}
+.stat span{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--parchment-dim)}
+
+/* ---------- Section headers ---------- */
+.eyebrow{
+  font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);
+  margin-bottom:6px;display:block;
+}
+section.block{margin-bottom:56px}
+h2.section-title{
+  font-size:1.7rem;margin:0 0 6px;color:var(--parchment);text-wrap:balance;
+}
+.section-sub{color:var(--parchment-dim);margin:0 0 22px;max-width:60ch}
+
+/* ---------- Join steps ---------- */
+.steps{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+.step{
+  background:var(--ink-raised);border:1px solid var(--rule);border-radius:4px;
+  padding:20px;min-width:0;
+}
+.step .num{font-family:'Cinzel',serif;color:var(--ember);font-size:0.85rem;letter-spacing:0.1em}
+.step h3{margin:6px 0 8px;font-size:1.05rem;color:var(--parchment)}
+.step p{margin:0;color:var(--parchment-dim);font-size:0.95rem}
+.realmcode{
+  display:block;margin-top:10px;background:var(--ink);border:1px solid var(--rule);
+  border-radius:3px;padding:8px 10px;font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:0.85rem;color:var(--gold);word-break:break-all;
+}
+.dl-button{
+  display:inline-block;margin-top:12px;padding:9px 16px;background:var(--ember);
+  color:var(--parchment);border-radius:3px;font-family:'Cinzel',serif;font-size:0.85rem;
+  letter-spacing:0.04em;text-decoration:none;border:1px solid rgba(0,0,0,0.2);
+}
+.dl-button:hover{filter:brightness(1.12)}
+.contact-box{
+  margin-top:20px;background:var(--ink-raised);border:1px solid var(--rule);border-radius:4px;
+  padding:20px;
+}
+.contact-box h3{margin:0 0 8px;font-size:1.05rem;color:var(--parchment)}
+.contact-box p{margin:0 0 10px;color:var(--parchment-dim);font-size:0.95rem}
+
+/* ---------- Class chapters ---------- */
+.chapter{border:1px solid var(--rule);border-radius:4px;margin-bottom:14px;overflow:hidden;background:var(--ink-raised)}
+.chapter > summary{
+  list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:12px;
+  font-family:'Cinzel',serif;color:var(--parchment);font-size:1.1rem;
+}
+.chapter > summary::-webkit-details-marker{display:none}
+.chapter > summary::before{content:'▸';color:var(--ember);transition:transform .15s ease;flex:none}
+.chapter[open] > summary::before{transform:rotate(90deg)}
+.chapter-sub{color:var(--parchment-dim);font-size:0.85rem;font-family:'Crimson Pro',serif;font-weight:normal;margin-left:auto;padding-left:10px}
+.chapter-body{padding:0 20px 20px}
+
+.class-card{border-top:1px solid var(--rule);padding-block:18px}
+.class-card:first-child{border-top:none}
+.class-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:4px}
+.class-head h3{margin:0;font-size:1.2rem;color:var(--gold)}
+.class-head .altname{font-size:0.82rem;color:var(--parchment-dim);font-style:italic}
+.class-meta{font-size:0.82rem;color:var(--parchment-dim);margin-bottom:8px}
+.class-meta b{color:var(--parchment);font-weight:600}
+.class-theme{margin:0 0 12px;color:var(--parchment-dim);font-size:0.95rem}
+
+.spec{margin-top:10px;padding-left:14px;border-left:2px solid var(--rule)}
+.spec b.spec-name{color:var(--parchment)}
+.spec .role-tag{
+  display:inline-block;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:10px;margin-left:8px;vertical-align:1px;
+}
+.role-tank{background:rgba(93,135,186,0.18);color:#9ec2e8}
+.role-heal{background:rgba(103,170,107,0.18);color:#a8d6ac}
+.role-melee{background:rgba(181,71,43,0.2);color:#e3a088}
+.role-ranged{background:rgba(201,151,47,0.2);color:#e5c177}
+.role-support{background:rgba(160,120,200,0.2);color:#cbb0e8}
+.spec p{margin:4px 0 0;color:var(--parchment-dim);font-size:0.92rem}
+
+/* ---------- Matrix table ---------- */
+.table-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:4px}
+table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:0.88rem}
+table.matrix th,table.matrix td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.matrix th{background:var(--ink-raised);color:var(--gold);font-family:'Cinzel',serif;font-weight:600;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase}
+table.matrix tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+table.matrix td{color:var(--parchment-dim)}
+table.matrix td:first-child{color:var(--parchment);font-weight:600}
+table.matrix td.empty{color:#4a3f30}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--rule);padding-top:28px;text-align:center;color:var(--parchment-dim);font-size:0.85rem}
+footer .note{max-width:52ch;margin:0 auto 14px}
+
+/* ---------- Search ---------- */
+.search-bar{margin-bottom:20px}
+.search-bar input{
+  width:100%;padding:11px 14px;background:var(--ink-raised);border:1px solid var(--rule);
+  border-radius:4px;color:var(--parchment);font-family:'Crimson Pro',serif;font-size:1rem;
+}
+.search-bar input::placeholder{color:var(--parchment-dim)}
+.search-bar input:focus{outline:2px solid var(--gold);outline-offset:1px}
+[hidden]{display:none!important}
+</style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap">
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="sigil">⚔</div>
+    <h1 class="realm-name">Shakiras Descension</h1>
+    <p class="tagline">A private Conquest of Azeroth realm with 21 custom classes, 70 specializations, and a world kept alive around the clock.</p>
+    <div class="stat-row">
+      <div class="stat"><b>21</b><span>Classes</span></div>
+      <div class="stat"><b>70</b><span>Specs</span></div>
+      <div class="stat"><b>500</b><span>Playerbots</span></div>
+      <div class="stat"><b>24/7</b><span>Uptime</span></div>
+    </div>
+  </header>
+
+  <section class="block" id="join">
+    <span class="eyebrow">Getting In</span>
+    <h2 class="section-title">Join the Realm</h2>
+    <p class="section-sub">Three things, in order. The launcher handles the realmlist for you, so you'll only type it once if you ever need to by hand.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">STEP ONE</span>
+        <h3>Get the client</h3>
+        <p>Download the Conquest of Azeroth client below and extract it to its own folder. It's a large download, so let it finish fully before moving on.</p>
+        <a class="dl-button" href="https://drive.google.com/drive/folders/1BomZVKHSn91BTFJdbZ8o_BJgDiXpOEIF?usp=sharing" target="_blank" rel="noopener" id="clientDownloadLink">Download client</a>
+      </div>
+      <div class="step">
+        <span class="num">STEP TWO</span>
+        <h3>Add the launcher</h3>
+        <p>Drop the Shakiras Descension launcher into the same folder as Ascension.exe. It checks server status and points the game at this realm automatically.</p>
+        <a class="dl-button" href="https://drive.google.com/file/d/16b6BzzWXkKR6tKo7HFcz9kH-lZxXy4DZ/view?usp=sharing" target="_blank" rel="noopener" id="launcherDownloadLink">Download launcher</a>
+      </div>
+      <div class="step">
+        <span class="num">STEP THREE</span>
+        <h3>Press Play</h3>
+        <p>That's the whole thing. If you ever need the realmlist by hand instead:</p>
+        <span class="realmcode">set realmlist 173.249.46.167</span>
+      </div>
+    </div>
+    <div class="contact-box">
+      <h3>Request access</h3>
+      <p>Tell me your desired username through the form below. Your password is handed over once your account is set up, not before.</p>
+      <a class="dl-button" href="https://docs.google.com/forms/d/e/1FAIpQLSetF0Ap7P0gZizNxY3WVtHci6gSGvxTBsMlJNj8nOHvAWQwBA/viewform?usp=publish-editor" target="_blank" rel="noopener">Request access</a>
+    </div>
+  </section>
+
+  <section class="block" id="classes">
+    <span class="eyebrow">The Codex</span>
+    <h2 class="section-title">Classes &amp; Specializations</h2>
+    <p class="section-sub">Twenty-one classes across five schools of warfare, each with three or four specs. Tap a chapter to open it, or search for a class, spec, or playstyle below.</p>
+
+    <div class="search-bar">
+      <input type="text" id="classSearch" placeholder="Search classes, specs, or themes… (e.g. “tank”, “Worgen”, “Necromancer”)">
+    </div>
+
+    <div id="chapters"></div>
+  </section>
+
+  <section class="block" id="matrix">
+    <span class="eyebrow">Quick Reference</span>
+    <h2 class="section-title">Role Matrix</h2>
+    <p class="section-sub">Every spec in the realm, sorted by the role it fills. A dash means that class has no spec in that column.</p>
+    <div class="table-scroll">
+      <table class="matrix">
+        <thead>
+          <tr><th>Class</th><th>Tank</th><th>Healer</th><th>Melee DPS</th><th>Ranged DPS</th><th>Support</th></tr>
+        </thead>
+        <tbody id="matrixBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p class="note">Several classes were renamed between alpha and the live release. If you're cross-referencing older guides: Son of Arugal → Bloodmage, Demon Hunter → Felsworn, Monk → Templar, Runeweaver → Runemaster, Disciple of Shadra → Venomancer.</p>
+    <p>Shakiras Descension · Conquest of Azeroth private realm</p>
+  </footer>
+
+</div>
+
+<script>
+const DATA = [
+{
+  chapter:"Heavy Martial & Frontline Classes", chapterNote:"5 classes · 15 specs",
+  classes:[
+    {name:"Barbarian", alt:null, stat:"Strength", resource:"Energy",
+      theme:"Savage tribal warriors linked to the Vrykul who combine brute weapon mastery with ancestral spirits.",
+      specs:[
+        {name:"Brutality", role:["melee"], text:"A fast-paced two-handed builder-spender similar to a Fury Warrior. Builds stacks via Brutal Swing and dumps resources into heavy execute phases (Decapitate) and Carnage burst windows, with rotational self-healing built into its attacks."},
+        {name:"Headhunting", role:["ranged"], text:"A mid-range throwing-weapon specialist. Plays like a hybrid of Survival Hunter and Feral Druid, using bleeds, snares, and high personal survivability to kite and wear down targets."},
+        {name:"Ancestry", role:["melee","support"], text:"An Enhancement Shaman-style melee brawler that calls upon ancestral spirits and Val'kyr to buff party members, provide off-healing, and resurrect fallen allies mid-combat."}
+      ]},
+    {name:"Guardian", alt:null, stat:"Strength", resource:"Energy",
+      theme:"Non-magical noble frontliners and tacticians who rely on heavy plate, shields, and battlefield formations.",
+      specs:[
+        {name:"Vanguard", role:["tank"], text:"The purest mitigation tank in CoA, akin to a classic Protection Warrior. Uses Formations to passively cut incoming damage by 10% and rotates heavy shield blocks and defensive cooldowns."},
+        {name:"Gladiator", role:["melee"], text:"An offensive sword-and-board bruiser that converts Block Rating directly into Attack Power via Shield Combat, using Ram and Pulverize for high physical burst while remaining naturally tanky."},
+        {name:"Inspiration", role:["melee","support"], text:"A battlefield commander (comparable to an Augmentation Evoker in melee) that uses banners, shouts, and coordinated strikes to amplify the raid's damage and defenses."}
+      ]},
+    {name:"Knight of Xoroth", alt:null, stat:"Strength", resource:"Rage + Demon's Blood & Demonfire",
+      theme:"Mortal corpses infused with the spirits of Xorothian demons, wielding hellfire, chains, and plagues.",
+      specs:[
+        {name:"War", role:["melee"], text:"A heavy two-handed physical/fire cleaver. Builds Demonfire stacks to empower Sever and Warbringer (an AoE slam that applies a 50% healing reduction), unleashing Pestilences for Shadowflame burst."},
+        {name:"Hellfire", role:["melee"], text:"A Shadowflame-focused melee damage dealer that plays like an offensive Vengeance Demon Hunter, specializing in multi-target immolation, fire cleaves, and explosive AoE."},
+        {name:"Defiance", role:["tank"], text:"A self-sustaining juggernaut akin to a Blood Death Knight. Generates Demon's Blood stacks to trigger massive absorb shields (Black Shield) or 30% damage reduction windows (Juggernaut) while locking enemies down with Flesh Hook and Chains of Malice."}
+      ]},
+    {name:"Reaper", alt:null, stat:"Strength", resource:"Runic Power",
+      theme:"Wraith-like warriors wielding Hungering Scythes who slip between the physical plane and the Spirit World.",
+      specs:[
+        {name:"Harvest", role:["melee"], text:"A high-sustain melee bruiser built around The Harvester passive, which leeches a percentage of all damage dealt back as health. Thrives on aggressive uptime and Masochistic Rage."},
+        {name:"Soul", role:["melee"], text:"A mobile, spectral melee damage dealer that harvests soul fragments from foes to fuel sinister shadow strikes and spirit-world bursts."},
+        {name:"Domination", role:["tank"], text:"A parrying, soul-cleaving tank that plays similarly to a Vengeance Demon Hunter, mitigating damage through active soul barrier absorption and rapid lifesteal strikes."}
+      ]},
+    {name:"Templar", alt:"formerly Monk", stat:"Agility", resource:"Energy + Runes & Oaths",
+      theme:"Scarlet Crusade-inspired martial zealots who fuse hand-to-hand combat and weaponry with Holy runic magic.",
+      specs:[
+        {name:"Crusader", role:["melee"], text:"A durable holy-melee bruiser akin to a Retribution Paladin. Weaves rune-empowered physical strikes with automatic Holy aftershocks and steady passive self-healing."},
+        {name:"Zealot", role:["melee"], text:"A high-tempo burst melee spec that uses builder attacks to bank Oaths and spends them on devastating single-target Holy/Physical finishers."},
+        {name:"Oathkeeper", role:["tank"], text:"An agile, elusive tank that blends Brewmaster Monk stagger/evasion mechanics with Mistweaver-style fistweaving, converting martial combos into protective holy wards and self-healing."}
+      ]}
+  ]
+},
+{
+  chapter:"Dark, Cursed & Fel Classes", chapterNote:"5 classes · 17 specs",
+  classes:[
+    {name:"Bloodmage", alt:"formerly Son of Arugal", stat:"Intellect or Agility", resource:"Mana & Rage",
+      theme:"Former servants of Archmage Arugal who combine vampiric San'layn blood magic with the Worgen curse.",
+      specs:[
+        {name:"Sanguine", role:["ranged"], text:"A Mortal Form dark caster that builds Thirst stacks to reduce cast time and boost the damage of Bloodbolt and Sanguine Rupture, draining enemy health like a hybrid Affliction Warlock and Blood DK."},
+        {name:"Accursed", role:["melee","ranged"], text:"A shapeshifting assassin dancing between caster form and Accursed (Worgen) Form. Inflicts heavy bleeds (Veinburst, Aortic Assault) and executes targets below 35% health with massive Shadow-lacerating strikes and lifesteal."},
+        {name:"Eternal", role:["tank"], text:"A Worgen-form curse tank that bonds to allies to redirect threat, mitigates burst with Blood Pact and Blood Shield, and heals lost health through Ravenous Bite and bleeding crits."},
+        {name:"Fleshweaver", role:["heal","ranged"], text:"A Discipline Priest-style combat medic using Sanguine Mend, blood shields, and life-transfusion mechanics to convert offensive blood magic and own health into party healing."}
+      ]},
+    {name:"Cultist", alt:null, stat:"Intellect", resource:"Mana & Insanity",
+      theme:"Devotees of the Old Gods who manipulate void tentacles, madness, and Eldritch corruption.",
+      specs:[
+        {name:"Corruption", role:["ranged"], text:"A Shadow Priest-like DoT weaver that layers void afflictions while summoning stationary tentacles to soak aggro and channel mind-flaying beams, managing Insanity below 100."},
+        {name:"Godblade", role:["melee"], text:"A void-infused melee bruiser (similar to Enhancement Shaman or Shadow-Retribution Paladin) that imbues weapons with Old God corruption and applies potent healing reduction debuffs."},
+        {name:"Dreadnought", role:["tank"], text:"An eldritch plate/mail-style tank that mutates its flesh, using void tendrils, sanity-draining auras, and Blood DK-style self-regeneration."},
+        {name:"Heretic", role:["heal"], text:"An atonement-style healer (akin to Discipline Priest) that shields allies with dark whispers and heals the party by dealing Shadow damage to enemies."}
+      ]},
+    {name:"Felsworn", alt:"formerly Demon Hunter", stat:"Agility or Intellect", resource:"Energy & Felfury",
+      theme:"Mortals bound to Legion demons who harness Shadowflame, warglaives, and demonic metamorphosis.",
+      specs:[
+        {name:"Slayer", role:["melee"], text:"A fast-paced physical dual-wielder that builds Demonic Rage to trigger Demon Form windows, shredding packs with Dancing Blades and fel shields."},
+        {name:"Infernal", role:["ranged"], text:"A unique Energy/Felfury ranged caster. Generates Felfury with Bane of Chaos and Fel Fireball, spending it on Sargeron Smite, Infernal Doom, and dropping live Infernals on enemies."},
+        {name:"Tyrant", role:["tank"], text:"A high-mobility leather/cloth-amplified tank that gains 120% bonus armor during Inner Demon. Parries with Twin Slice, taunts and ignores 50% damage before a leeching Felfire Blast."}
+      ]},
+    {name:"Necromancer", alt:null, stat:"Intellect", resource:"Mana + Runic Power & Life Force",
+      theme:"Dark wizards of Scholomance and Icecrown who command undead legions, plagues, and bone magic.",
+      specs:[
+        {name:"Animation", role:["ranged"], text:"A master minion-mancer that maintains permanent Ghouls, Banshees, Abominations, and Decaying Colossi under a Life Force cap, triggering Unholy Frenzy and Plaguefather summons."},
+        {name:"Death", role:["ranged"], text:"An Affliction/Unholy hybrid caster focused on virulent necrotic diseases, soul-draining channels, and exploding plague eruptions."},
+        {name:"Rime", role:["ranged"], text:"A frigid lich-style caster combining the burst and shattering frost mechanics of a Frost Death Knight with ranged icicle nukes and a supplemental undead minion."}
+      ]},
+    {name:"Venomancer", alt:"formerly Disciple of Shadra", stat:"Intellect", resource:"Rage",
+      theme:"Venomous cultists devoted to Shadra, the Loa of Spiders, capable of transforming into giant arachnids and scorpids.",
+      specs:[
+        {name:"Rotweaver", role:["ranged"], text:"An attrition-based poison caster that layers stacking neurotoxins and Spider Eggs (which hatch and root/CC enemies) while converting its own DoT ticks into passive self-healing."},
+        {name:"Stalking", role:["melee"], text:"A Feral Druid-style melee shapeshifter fighting in Spider form, using stealth, web pulls, venomous bites, and rapid hit-and-run bleeds."},
+        {name:"Fortitude", role:["tank"], text:"A Scorpid-form tank playing similarly to a Brewmaster Monk, using chitinous carapace armor, venom-staggering mitigation, and debilitating poison clouds."},
+        {name:"Vizier", role:["heal"], text:"A HoT-focused healer (akin to Restoration Druid) that blankets the raid in regenerative silk cocoons and antivenom poultices."}
+      ]}
+  ]
+},
+{
+  chapter:"Arcane, Elemental & Cosmic Casters", chapterNote:"4 classes · 12 specs",
+  classes:[
+    {name:"Chronomancer", alt:null, stat:"Intellect & Spirit", resource:"Mana + Echo Fragments",
+      theme:"Bronze and Infinite Dragonflight-trained arcanists who bend timelines, gravity, and reality.",
+      specs:[
+        {name:"Infinite", role:["ranged"], text:"A Chaos/Chromatic caster that seeds reality-melting DoTs (Melt Reality, Timerend, Decomposition) to proc Anomaly Spikes, culminating in Incarnate of Chaos free-cast loops."},
+        {name:"Artificer", role:["ranged"], text:"A unique ranged wand-weaver using Artificer's Wand and Wand of Time to generate Echo Fragments and Discovery stacks, spent on Shatter Echo and Crystal Cannon barrages."},
+        {name:"Time", role:["heal"], text:"A temporal healer similar to a Preservation Evoker. Rewinds damage with Reverse Wound, places delayed heal-absorbs, and drops Aeon zones that haste allies and strip undispellable effects."}
+      ]},
+    {name:"Pyromancer", alt:null, stat:"Intellect", resource:"Mana + Breath Charges & Heat",
+      theme:"Disciples of Kael'thas and the Red/Black Dragonflights who wield pure fire and draconic breath.",
+      specs:[
+        {name:"Incineration", role:["ranged"], text:"A classic glass-cannon Fire Mage archetype built around high critical strike scaling, Ignite proliferation, and massive pyroblast/meteor combos."},
+        {name:"Draconic", role:["ranged"], text:"Plays like a Devastation Evoker. Gains bonus armor from Intellect and dragon-scale defensives to fight at close-to-mid range, building Heat and Embers alongside a Phoenix pet."},
+        {name:"Flameweaving", role:["heal"], text:"A cauterizing healer (akin to Preservation Evoker) using warming Red Dragonflight flames, Phoenix regeneration, and fiery shields to mend wounds and cleanse allies."}
+      ]},
+    {name:"Runemaster", alt:"formerly Runeweaver", stat:"Intellect", resource:"Mana + Runes & Essences",
+      theme:"Master arcanists and mage-hunters who inscribe magical runes onto the ground, their weapons, and their bodies.",
+      specs:[
+        {name:"Glyphic", role:["ranged"], text:"An Arcane Mage-style combo caster that places elemental/arcane glyphs on the ground, commands a Familiar pet, and combines Essences to trigger high-damage runic detonations."},
+        {name:"Engravement", role:["melee"], text:"A sustained spellblade (similar to Enhancement Shaman) that etches Fire, Frost, and Arcane runes into its weapons for rhythmic elemental strikes."},
+        {name:"Riftblade", role:["melee"], text:"A hyper-mobile blink-assassin fusing Subtlety Rogue stealth and burst with Frost DK rune mechanics, teleporting behind targets for lethal Arcane/Frost one-shot combos."}
+      ]},
+    {name:"Stormbringer", alt:null, stat:"Intellect", resource:"Mana + Static Charges",
+      theme:"Armored weather-wizards who channel torrential rain, hurricanes, and high-voltage lightning.",
+      specs:[
+        {name:"Lightning", role:["ranged"], text:"A high-voltage burst caster that builds Static charges to amplify crit damage, darting across the battlefield as a ball of lightning for instant-cast shock combos."},
+        {name:"Maelstrom", role:["ranged"], text:"An AoE-focused tempest caster that drops persistent storm fields, slows, and wind knockbacks to control and electrocute large packs from a safe distance."},
+        {name:"Wind", role:["ranged","support"], text:"An Augmentation Evoker-style support caster harnessing gale-force winds and cyclone barriers to boost party haste, mobility, and spell throughput."}
+      ]}
+  ]
+},
+{
+  chapter:"Divine, Astral & Primal Classes", chapterNote:"4 classes · 15 specs",
+  classes:[
+    {name:"Primalist", alt:null, stat:"Strength or Intellect", resource:"Rage & Mana",
+      theme:"Wild shamanic-druidic champions of the Earthmother who channel seismic earth magic, beast spirits, and ancient trees.",
+      specs:[
+        {name:"Wildwalker", role:["melee"], text:"A shapeshifting melee bruiser fighting alongside a tamed beast pet, using Bearskin and Golem Form defensives while converting Rage directly into self-healing."},
+        {name:"Geomancy", role:["ranged"], text:"An earth-and-magma burst caster that hurls boulders and volcanic spikes, equipped with a stone-form immunity panic button to shrug off crowd control."},
+        {name:"Grovekeeper", role:["heal","support"], text:"A frontline fistweaver-style support spec using Seismic Wave and Hammer of Life to heal allies, transforming into an Ancient of Lore or Ancient of War for raid-wide buffs."},
+        {name:"Mountain King", role:["tank"], text:"A sturdy earthen tank (blending Protection Warrior and Guardian Druid) that encases itself in living rock and triggers seismic shockwaves to hold aggro."}
+      ]},
+    {name:"Starcaller", alt:null, stat:"Agility or Intellect", resource:"Mana",
+      theme:"Heavily armored Night Elven and Tauren cosmic warriors who channel the astral power of Elune and the stars.",
+      specs:[
+        {name:"Sentinel", role:["ranged"], text:"An astral archer scaling with both Attack Power and Max Mana, firing Huntress Shot, Starfire Shot, and Scattered Stars volleys to kite and burn down targets."},
+        {name:"Warden", role:["melee"], text:"A hyper-mobile glaive assassin (akin to a Havoc Demon Hunter) using blink strikes, lunar cleaves, and an avatar transformation cooldown for intense melee burst."},
+        {name:"Moon Guard", role:["tank"], text:"A heavily armored astral paladin using its massive mana pool to power lunar barriers, starlight consecrations, and arcane deflection shields."},
+        {name:"Moon Priest", role:["heal"], text:"A cosmic healer combining Restoration Shaman chain-heals with Discipline Priest-style starlight shields and astral damage-to-healing conversion."}
+      ]},
+    {name:"Sun Cleric", alt:null, stat:"Intellect or Strength", resource:"Mana + Solar Power",
+      theme:"Devout priests and Valkyrie-touched Sun Knights who harness blinding solar radiation and desert fire.",
+      specs:[
+        {name:"Piety", role:["ranged"], text:"A battle-priest caster (similar to Balance Druid crossed with Fire Mage) that chains Smite and Holy Fire nukes to stack Solar Power, boosting damage and off-healing."},
+        {name:"Valkyrie", role:["melee"], text:"A righteous melee hybrid following the Path of the Valkyrie, charging into battle with two-handed weapons to sear enemies with radiant solar strikes while passively healing nearby allies."},
+        {name:"Blessings", role:["heal"], text:"A powerhouse preventative healer (combining Holy Paladin throughput with Discipline Priest shields) bathing the raid in sunlight wards and radiant beacons."},
+        {name:"Seraphim", role:["tank"], text:"A radiant plate tank akin to a Protection Paladin, using solar-charged shields, blinding light auras, and self-healing judgements to anchor the frontline."}
+      ]},
+    {name:"Witch Doctor", alt:null, stat:"Intellect", resource:"Mana",
+      theme:"Troll voodoo masters, alchemists, and Loa shadow-hunters who mix hexes, totemic wards, and volatile brews.",
+      specs:[
+        {name:"Voodoo", role:["ranged","support"], text:"An Augmentation Evoker-style curse and hex specialist that stacks Loa blessings to 5, debuffs enemies with jinxes, and amplifies party damage while kiting with heavy crowd control."},
+        {name:"Shadowhunting", role:["ranged"], text:"A mid-range elemental/voodoo skirmisher built on a Survival Hunter and Shaman chassis, weaving shadow-spear throws, serpent wards, and elusive Mirage defensives."},
+        {name:"Brewing", role:["heal"], text:"A dynamic alchemical healer (mechanically similar to Preservation Evoker) tossing regenerative potions, Loa elixirs, and cleansing concoctions across the battlefield."}
+      ]}
+  ]
+},
+{
+  chapter:"Martial Marksmen, Gadgets & Inquisitors", chapterNote:"3 classes · 11 specs",
+  classes:[
+    {name:"Ranger", alt:null, stat:"Agility", resource:"Focus",
+      theme:"Pure martial survivalists, bandits, and elven archers who rely on bowcraft, dual blades, and tactical traps without using magic.",
+      specs:[
+        {name:"Archery", role:["ranged"], text:"A pure marksman spec (akin to Marksmanship Hunter) that applies barbed DoTs and builds Focus to spend on heavy Aimed Shot snipes from long range."},
+        {name:"Brigand", role:["melee"], text:"A dirty-fighting dual-wield rogue spec blending Assassination poisons and bleeds with Outlaw-style grappling hooks, blinding powders, and brawling utility."},
+        {name:"Farstrider", role:["ranged","support"], text:"A tactical scout and party force-multiplier (similar to Augmentation Evoker) that marks high-value targets, calls out weak points, and buffs raid haste and critical strike chance."}
+      ]},
+    {name:"Tinker", alt:null, stat:"Agility or Intellect", resource:"Mana + Ammo & Scrap",
+      theme:"Eccentric Gnomish and Goblin engineers who deploy blunderbusses, automated turrets, clockwork mechs, and explosives.",
+      specs:[
+        {name:"Demolition", role:["ranged"], text:"A heavy-ordnance firearms specialist managing an Ammo reload loop, coating targets in Napalm and incendiary rounds while kiting with shotgun knockbacks and remote mines."},
+        {name:"Mechanics", role:["ranged"], text:"Plays like a technological Demonology Warlock. Builds Scrap to deploy turrets and Overclock mechanical pets, and can pilot a heavy Mechsuit armed with Laser Beams, Gatling Guns, and Sticky Bombs."},
+        {name:"Invention", role:["heal"], text:"A gadget-based medic (mechanically akin to Restoration Shaman) deploying healing dispenser turrets, Kinetic Shields (40% damage reduction + stun immunity), and cleansing alarm beacons."}
+      ]},
+    {name:"Witch Hunter", alt:null, stat:"Agility", resource:"Mana or Energy",
+      theme:"Gothic inquisitors and monster slayers who hunt dark magic users with crossbows, silvered blades, and warhounds.",
+      specs:[
+        {name:"Boltslinger", role:["ranged"], text:"A fast-paced crossbow/pistol skirmisher (reading like an Outlaw Rogue / Survival Hunter hybrid) using trick shots, silver bolts, and caltrops to kite enemies."},
+        {name:"Houndmaster", role:["ranged"], text:"A beast-handler spec fighting alongside vicious warhounds, commanding them to maul, pin, and bleed targets while firing from mid-range."},
+        {name:"Inquisition", role:["melee"], text:"A zealous build-and-spend melee damage dealer combining physical swordplay with searing Fire and Shadow judgements to purge heretics."},
+        {name:"Black Knight", role:["tank"], text:"A heavily armored duelist tank with doubled mail armor scaling. Relies on parrying and dodging to trigger Noctis Blade (healing 150% of damage dealt), leeching health on auto-attacks and locking down casters with Guard Strike interrupts."}
+      ]}
+  ]
+}
+];
+
+const ROLE_LABEL = {tank:"Tank",heal:"Healer",melee:"Melee",ranged:"Ranged",support:"Support"};
+
+function roleTagsHtml(roles){
+  return roles.map(r=>`<span class="role-tag role-${r}">${ROLE_LABEL[r]}</span>`).join('');
+}
+
+function render(){
+  const container = document.getElementById('chapters');
+  container.innerHTML = DATA.map((ch,ci)=>`
+    <details class="chapter" data-ci="${ci}" ${ci===0?'open':''}>
+      <summary>${ch.chapter}<span class="chapter-sub">${ch.chapterNote}</span></summary>
+      <div class="chapter-body">
+        ${ch.classes.map(c=>`
+          <div class="class-card" data-search="${(c.name+' '+(c.alt||'')+' '+c.theme+' '+c.specs.map(s=>s.name+' '+s.text).join(' ')).toLowerCase().replace(/"/g,'&quot;')}">
+            <div class="class-head">
+              <h3>${c.name}</h3>
+              ${c.alt?`<span class="altname">${c.alt}</span>`:''}
+            </div>
+            <div class="class-meta"><b>${c.stat}</b> / ${c.resource}</div>
+            <p class="class-theme">${c.theme}</p>
+            ${c.specs.map(s=>`
+              <div class="spec">
+                <b class="spec-name">${s.name}</b>${roleTagsHtml(s.role)}
+                <p>${s.text}</p>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </details>
+  `).join('');
+
+  // Matrix
+  const roleOrder = ['tank','heal','melee','ranged','support'];
+  const matrixBody = document.getElementById('matrixBody');
+  let rows = '';
+  DATA.forEach(ch=>{
+    ch.classes.forEach(c=>{
+      const byRole = {tank:[],heal:[],melee:[],ranged:[],support:[]};
+      c.specs.forEach(s=>{
+        s.role.forEach(r=>{ if(byRole[r]) byRole[r].push(s.name); });
+      });
+      rows += `<tr><td>${c.name}</td>${roleOrder.map(r=>{
+        const v = byRole[r];
+        return v.length ? `<td>${v.join(', ')}</td>` : `<td class="empty">·</td>`;
+      }).join('')}</tr>`;
+    });
+  });
+  matrixBody.innerHTML = rows;
+}
+
+render();
+
+// Search filter
+const searchInput = document.getElementById('classSearch');
+searchInput.addEventListener('input', ()=>{
+  const q = searchInput.value.trim().toLowerCase();
+  document.querySelectorAll('.chapter').forEach(chapterEl=>{
+    let anyVisible = false;
+    chapterEl.querySelectorAll('.class-card').forEach(card=>{
+      const match = !q || card.getAttribute('data-search').includes(q);
+      card.hidden = !match;
+      if(match) anyVisible = true;
+    });
+    chapterEl.hidden = !anyVisible;
+    if(q && anyVisible) chapterEl.open = true;
+  });
+});
+</script>
